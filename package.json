@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "babel src --out-dir dist"
+    "build": "npm install && npm start",
+    "oldbuild": "babel src --out-dir dist"
   },
   "author": "Tanner",
   "license": "ISC",
