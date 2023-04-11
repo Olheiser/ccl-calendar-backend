@@ -9,7 +9,7 @@ exports.getCourts = async (req, res) => {
     return res.status(500).json({ error: 'Server error occurred' });
   }
 };
-
+//note
 exports.createCourt = async (req, res) => {
   try {
     const court = new Court(req.body);
