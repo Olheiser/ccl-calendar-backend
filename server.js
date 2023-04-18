@@ -50,7 +50,8 @@ app.use('/api/courtAttendance', courtAttendanceRouter);
 app.use('/auth', authRouter);
 
 // Start the server and listen on port 8000
-const server = app.listen(PORT, () => {
+// The '0.0.0.0' IP address means that the server will listen on all available network interfaces.
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server started on port ${PORT}`);
 });
 
