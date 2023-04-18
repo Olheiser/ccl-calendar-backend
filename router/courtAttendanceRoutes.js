@@ -5,10 +5,10 @@ const {
     getCourtAttendanceById, 
     createCourtAttendance, 
     updateCourtAttendance, 
-    deleteCourtAttendance,
-    getCourtAttendanceByUserId,
-    getCourtAttendanceByCity,
-    getCourtAttendancesByDate,
+    deleteCourtAttendance, 
+    getCourtAttendanceByUserId, 
+    getCourtAttendanceByCity, 
+    getCourtAttendancesByDate, 
     createCourtAttendanceWidget
 } = require('../controllers/courtAttendanceController');
 
