@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 //const http = require('http'); // provides the createServer() method
 const bodyParser = require('body-parser'); // parse the request body and make it available as a javascript object
@@ -14,6 +15,7 @@ const authRouter = require('./router/authRoutes')
 
 const app = express(); // Create an instance of the Express application
 const MONGO_URL = 'mongodb+srv://npradmin:IwaAtlassaur49@nprobinson.7yutoqh.mongodb.net/CanadaCriminalLawyer';
+const PORT = process.env.PORT || 8000;
 
 // allows your server to accept requests from other domains
 app.use(cors({
@@ -48,8 +50,8 @@ app.use('/api/courtAttendance', courtAttendanceRouter);
 app.use('/auth', authRouter);
 
 // Start the server and listen on port 8000
-const server = app.listen(8000, () => {
-  console.log('Server started on port 8000');
+const server = app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
 
 // Handle errors
