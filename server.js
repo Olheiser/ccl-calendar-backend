@@ -43,10 +43,10 @@ mongoose.connect(MONGO_URL, {
   process.exit(1);
 })
 
-app.use('/api/users', userRouter);
-app.use('/api/courts', courtRouter);
-app.use('/api/courtSittings', courtSittingRouter);
-app.use('/api/courtAttendance', courtAttendanceRouter);
+app.use('/users', userRouter);
+app.use('/courts', courtRouter);
+app.use('/courtSittings', courtSittingRouter);
+app.use('/courtAttendance', courtAttendanceRouter);
 app.use('/auth', authRouter);
 
 // Start the server and listen on port 8000
