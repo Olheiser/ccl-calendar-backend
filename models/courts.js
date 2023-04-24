@@ -5,6 +5,9 @@ const courtSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  address2: {
+    type: String
+  },
   postal_code: {
     type: String,
     required: true
@@ -23,6 +26,11 @@ const courtSchema = new mongoose.Schema({
   },
   fax: {
     type: String,
+    required: true
+  },
+  court_type: ["Provincial Court", "Kings Bench"],
+  orbiter: {
+    type: Boolean,
     required: true
   }
 });

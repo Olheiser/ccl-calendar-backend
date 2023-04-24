@@ -9,7 +9,7 @@ const {
     getCourtAttendanceByUserId, 
     getCourtAttendanceByCity, 
     getCourtAttendancesByDate, 
-    createCourtAttendanceWidget
+    createCourtAttendanceWidget 
 } = require('../controllers/courtAttendanceController');
 
 courtAttendanceRouter.route('/')

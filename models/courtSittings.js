@@ -5,16 +5,7 @@ const courtSittingSchema = new mongoose.Schema({
   court_ID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Court',
-  }, /*
-  court_type: {
-    type: String,
-    enum: ['Provincial Court', 'Kings Bench', 'Appeal Court'],
-    required: true
-  },
-  court_room: {
-    type: Number
-    //required: true
-  },*/
+  }, 
   month: {
     type: Number,
     required: true
@@ -34,12 +25,6 @@ const courtSittingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'CourtAttendance'
   }]
-  /*, I'd rather place this in the courtAttendance so I can group people easier
-  time: {
-    type: String,
-    enum: ['AM', 'PM'],
-    required: true
-  }*/
 });
 
 courtSittingSchema.pre('save', function(next) {
@@ -63,8 +48,10 @@ courtSittingSchema.virtual('courtAttendanceDetails', {
   populate: { path: 'user_ID', select: 'first_name last_name' }
 })
 
-const CourtSitting = mongoose.model('CourtSitting', courtSittingSchema);
+// const CourtSitting = mongoose.model('CourtSitting', courtSittingSchema);
+const CourtSittingSaskatchewan = mongoose.model('Saskatchewan_CourtSitting', courtSittingSchema);
+
 
 // Choosing to separate month, day, year into different fields since it makes grouping data by specific parts of the date easier. 
 
-module.exports = CourtSitting;
+module.exports = CourtSittingSaskatchewan;

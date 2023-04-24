@@ -1,7 +1,7 @@
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 const mongoose = require('mongoose');
-const CourtSitting = require('./models/courtSittings');
+const CourtSittingSaskatchewan = require('./models/courtSittings');
 
 dayjs.extend(utc);
 
@@ -108,7 +108,7 @@ const populateCourtSitting = async () => {
         const isStatHoliday = checkIfStatHoliday(currentDay); // Implement this function to check if the current day is a stat holiday
   
         if (dayOfWeek !== 0 && dayOfWeek !== 6 && !isStatHoliday) {
-          const courtSitting = new CourtSitting({
+          const courtSitting = new CourtSittingSaskatchewan({
             court_ID: courtId,
             month: currentDay.month() + 1,
             day: currentDay.date(),

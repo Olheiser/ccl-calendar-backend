@@ -10,12 +10,7 @@ const courtAttendanceSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users',
     required: true,
-  },/*
-  court_ID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Court',
-    required: true
-  },*/
+  },
   court_type: {
     type: String,
     enum: ['Provincial Court', 'Kings Bench', 'Appeal Court'],

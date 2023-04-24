@@ -1,4 +1,4 @@
-const CourtSitting = require('./../models/courtSittings');
+const CourtSittingSaskatchewan = require('./../models/courtSittings');
 const dayjs = require('dayjs');
 
 const formatDate = (date) => {
@@ -25,7 +25,7 @@ exports.getCourtSittingByDate = async (req, res) => {
 
 exports.getCourtSittings = async (req, res) => {
   try {
-    const courtSittings = await CourtSitting.find()
+    const courtSittings = await CourtSittingSaskatchewan.find()
     .populate({
       path: 'courtAttendances',
       model: 'CourtAttendance',
@@ -51,7 +51,7 @@ exports.getCourtSittings = async (req, res) => {
 exports.getAllCourtSittingsByCourtID = async (req, res) => {
   try {
     const {court_ID} = req.params;
-    const courtSittings = await CourtSitting.find({ court_ID: court_ID })
+    const courtSittings = await CourtSittingSaskatchewan.find({ court_ID: court_ID })
     res.status(200).json(courtSittings);
   } catch (error) {
       console.error(error);
@@ -61,12 +61,12 @@ exports.getAllCourtSittingsByCourtID = async (req, res) => {
 
 // Retrieve all court sittings (cities) for a particular date
 exports.getCourtSittingByDate = async (req, res) => {
-  const courtSittings = await CourtSitting.find({ date: date });
+  const courtSittings = await CourtSittingSaskatchewan.find({ date: date });
 }
 
 exports.getAllCourtSittingsSortedByDate = async (req, res) => {
   try {
-    const courtSittings = await CourtSitting.find();
+    const courtSittings = await CourtSittingSaskatchewan.find();
 
     // Create an object to store courtSittings grouped by date
     const courtSittingsByDate = {};
@@ -91,7 +91,7 @@ exports.getAllCourtSittingsSortedByDate = async (req, res) => {
 
 exports.createCourtSitting = async (req, res) => {
   try {
-    const courtSitting = new CourtSitting(req.body);
+    const courtSitting = new CourtSittingSaskatchewan(req.body);
     const savedCourtSitting = await courtSitting.save();
     return res.status(201).json(savedCourtSitting);
   } catch (error) {
@@ -104,7 +104,7 @@ exports.getCourtSittingById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const courtSitting = await CourtSitting.findById(id)
+    const courtSitting = await CourtSittingSaskatchewan.findById(id)
       .populate({
         path: 'courtAttendances',
         model: 'CourtAttendance',
@@ -131,7 +131,7 @@ exports.updateCourtSitting = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const courtSitting = await CourtSitting.findByIdAndUpdate(id, req.body, { new: true }).populate('court_ID', 'city province');
+    const courtSitting = await CourtSittingSaskatchewan.findByIdAndUpdate(id, req.body, { new: true }).populate('court_ID', 'city province');
 
     if (!courtSitting) {
       return res.status(404).json({ message: 'Court sitting not found' });
@@ -148,7 +148,7 @@ exports.deleteCourtSitting = async (req, res) => {
     const { id } = req.params;
   
     try {
-      const courtSitting = await CourtSitting.findByIdAndDelete(id);
+      const courtSitting = await CourtSittingSaskatchewan.findByIdAndDelete(id);
   
       if (!courtSitting) {
         return res.status(404).json({ message: 'Court sitting not found' });
@@ -163,7 +163,7 @@ exports.deleteCourtSitting = async (req, res) => {
 
   exports.deleteAllCourtSittings = async (req, res) => {
     try {
-      await CourtSitting.deleteMany({});
+      await CourtSittingSaskatchewan.deleteMany({});
       console.log("Deleted all court sittings");
       return res.status(204).json({ message: 'All court sittings deleted' });
     } catch (error) {
