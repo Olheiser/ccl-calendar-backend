@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const courtAttendanceSchema = new mongoose.Schema({
   courtSitting_ID: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'CourtSitting',
+    ref: 'Saskatchewan_CourtSitting',
     required: true,
   },
   user_ID: {
@@ -36,7 +36,7 @@ courtAttendanceSchema.index({ courtSitting_ID: 1, user_ID: 1 }, { unique: true }
 // Before saving a court attendance document, ensure that the associated courtSitting and user documents exist
 courtAttendanceSchema.pre('save', async function (next) {
   try {
-    const courtSitting = await mongoose.model('CourtSitting').findById(this.courtSitting_ID);
+    const courtSitting = await mongoose.model('Saskatchewan_CourtSitting').findById(this.courtSitting_ID);
     if (!courtSitting) {
       throw new Error('Invalid courtSitting_ID');
     }
