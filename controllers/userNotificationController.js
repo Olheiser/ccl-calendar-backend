@@ -1,0 +1,1 @@
+const UserNotification = require('./../models/userNotifications');

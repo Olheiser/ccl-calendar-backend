@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 });
 
+userSchema.virtual('userNotifications', {
+  ref: 'UserNotification',
+  localField: '_id',
+  foreignField: 'userId',
+});
+
 const User = mongoose.model("Users", userSchema);
 
 
