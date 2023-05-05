@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   phone_number: String,
   user_type: {type: String, default: 'lawyer'},
+  pushSubscription: {type: Object},
   authentication: {
     password: { type: String, required: true, select: false },
     salt: { type: String, required: true, select: false },

@@ -6,13 +6,14 @@ const bodyParser = require('body-parser'); // parse the request body and make it
 const compression = require('compression');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const startScraper = require('./scraper');
+const startScraper = require('./supremeAdvocacyScraper');
 
 const userRouter = require('./router/userRoutes')
 const courtRouter = require('./router/courtRoutes')
 const courtSittingRouter = require('./router/courtSittingRoutes')
 const courtAttendanceRouter = require('./router/courtAttendanceRoutes')
 const authRouter = require('./router/authRoutes')
+const notificationRouter = require('./router/notificationRoutes')
 
 const app = express(); // Create an instance of the Express application
 const MONGO_URL = 'mongodb+srv://npradmin:IwaAtlassaur49@nprobinson.7yutoqh.mongodb.net/CanadaCriminalLawyer';
@@ -49,6 +50,7 @@ app.use('/courts', courtRouter);
 app.use('/courtSittings', courtSittingRouter);
 app.use('/courtAttendance', courtAttendanceRouter);
 app.use('/auth', authRouter);
+app.use('/notifications', notificationRouter);
 
 // Start the server and listen on port 8000
 // The '0.0.0.0' IP address means that the server will listen on all available network interfaces.

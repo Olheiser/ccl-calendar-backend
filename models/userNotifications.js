@@ -16,6 +16,13 @@ const userNotificationSchema = new mongoose.Schema({
     readAt: {
         type: Date,
     },
+    sent: {
+        type: Boolean,
+        default: false,
+    },
+    sentAt: {
+        type: Date,
+    }
 });
 
 const UserNotification = mongoose.model('UserNotification', userNotificationSchema);

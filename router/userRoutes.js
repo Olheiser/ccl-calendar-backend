@@ -1,7 +1,7 @@
 const express = require('express');
 const userRouter = express.Router();
 
-const {getUsers, getUserById, createUser, updateUser, deleteUser} = require('./../controllers/userController');
+const {getUsers, getUserById, createUser, updateUser, deleteUser, savePushSubscription, disablePushSubscription} = require('./../controllers/userController');
 const { isAuthenticated, isOwner } = require('../middlewares/index');
 
 userRouter.route('/')
@@ -16,5 +16,9 @@ userRouter.route('/:id')
   //.get(isAuthenticated, getUserById)
   //.patch(isAuthenticated, isOwner, updateUser)
   //.delete(isAuthenticated, isOwner, deleteUser);
+
+userRouter.route('/:id/push-subscription')
+  .post(savePushSubscription)
+  .patch(disablePushSubscription);
 
 module.exports = userRouter;

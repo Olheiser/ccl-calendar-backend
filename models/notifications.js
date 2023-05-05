@@ -5,11 +5,11 @@ const notificationSchema = new mongoose.Schema({
     title: String,
     message: String,
     url: String, 
+    articleID: String,
     createdAt: {
         type: Date,
         default: Date.now,
     },
-    metadata: mongoose.Schema.Types.Mixed,
 });
 
 const Notification = mongoose.model("Notification", notificationSchema);
