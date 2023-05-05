@@ -6,7 +6,7 @@ const bodyParser = require('body-parser'); // parse the request body and make it
 const compression = require('compression');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const startScraper = require('./supremeAdvocacyScraper');
+//const startScraper = require('./supremeAdvocacyScraper');
 
 const userRouter = require('./router/userRoutes')
 const courtRouter = require('./router/courtRoutes')
@@ -64,4 +64,4 @@ server.on('error', (err) => {
   process.exit(1);
 })
 
-startScraper();
+//startScraper();
